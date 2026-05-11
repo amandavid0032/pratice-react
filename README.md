@@ -354,7 +354,7 @@ Used to memoize functions and prevent unnecessary re-renders.
 
 * Inside loops
 * Inside conditions
-* Inside nested functions
+* Inside nested functions`
 
 ### ✅ Correct:
 
