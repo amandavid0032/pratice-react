@@ -115,3 +115,48 @@ function Welcome(props) {
 ## 💡 Tip
 
 👉 Always prefer **functional components** unless you are working on legacy code.
+
+
+
+## what are hooks 
+
+ hook are special functions that let you hook into react feature like state and life cycle from function components 
+
+ hooks are a new feature addition in react version 16.8 which allow you to use react features without having. to write a class 
+ ex. state of component 
+ hooks don't work inside classes 
+
+
+ why hoooks 
+
+ resone 1 
+
+ understand how this keyword works in javascript remember to bind event handlers in class components classes don't minify very well and make hot reloading very unreliable 
+
+ resone set 2 
+ there is no particular way to resuse statefull component logix hoc and render props patterns do address this problem makes the code harder to follow there is need a to share statefull logic in a better way 
+
+ resone set 3 
+ create components for complex scenarios such as data ftching and subscribing to even t related code is not organized in one placcr 
+ ex data featching in componentdid mount and component did update 
+ ex event listeners in componentdidmount and componentwull Unmount 
+ because of statefull logic-- cannot break components into smaller ones 
+
+
+ noteworthy points 
+ react version 16.8 or hgher 
+ completelt opt in 
+ hooks don't conatian any breaking chanhes and the release is 100% backwards-compatible 
+ classes won't be removed from react 
+ cant't use hooks insider of a class component
+ hooks don't replace your existing knowledge of react concepts 
+ instead hooks provied a more direct api to the react concepts you already know 
+
+
+ summary 
+ hooks are a new feature addition in react version 16.8 
+ they allow you to use react features without having to write a class
+  
+  avoid the whole confusion with this keyword allow you to resuse statefull logid 
+  organize the logic inside a component into reusable isolated units 
+  
