@@ -116,47 +116,299 @@ function Welcome(props) {
 
 👉 Always prefer **functional components** unless you are working on legacy code.
 
+---
 
+# 🪝 React Hooks
 
-## what are hooks 
+## 📌 What are Hooks?
 
- hook are special functions that let you hook into react feature like state and life cycle from function components 
+Hooks are **special functions** that let you use React features like:
 
- hooks are a new feature addition in react version 16.8 which allow you to use react features without having. to write a class 
- ex. state of component 
- hooks don't work inside classes 
+* State management
+* Lifecycle methods
+* Side effects
+* Context API
 
+inside **functional components** without writing class components.
 
- why hoooks 
+👉 Hooks were introduced in **React 16.8**.
 
- resone 1 
+---
 
- understand how this keyword works in javascript remember to bind event handlers in class components classes don't minify very well and make hot reloading very unreliable 
+## 🤔 Why Were Hooks Introduced?
 
- resone set 2 
- there is no particular way to resuse statefull component logix hoc and render props patterns do address this problem makes the code harder to follow there is need a to share statefull logic in a better way 
+Before Hooks, developers mainly used **class components** for state and lifecycle methods.
 
- resone set 3 
- create components for complex scenarios such as data ftching and subscribing to even t related code is not organized in one placcr 
- ex data featching in componentdid mount and component did update 
- ex event listeners in componentdidmount and componentwull Unmount 
- because of statefull logic-- cannot break components into smaller ones 
+But class components created many problems.
 
+---
 
- noteworthy points 
- react version 16.8 or hgher 
- completelt opt in 
- hooks don't conatian any breaking chanhes and the release is 100% backwards-compatible 
- classes won't be removed from react 
- cant't use hooks insider of a class component
- hooks don't replace your existing knowledge of react concepts 
- instead hooks provied a more direct api to the react concepts you already know 
+## ❌ Problems with Class Components
 
+### 1. `this` Keyword Confusion
 
- summary 
- hooks are a new feature addition in react version 16.8 
- they allow you to use react features without having to write a class
-  
-  avoid the whole confusion with this keyword allow you to resuse statefull logid 
-  organize the logic inside a component into reusable isolated units 
-  
+In class components:
+
+* You must use `this` everywhere
+* Event handlers often need `bind(this)`
+* Forgetting to bind causes errors
+
+#### Example:
+
+```jsx
+class Welcome extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    console.log(this);
+  }
+
+  render() {
+    return <button onClick={this.handleClick}>Click</button>;
+  }
+}
+```
+
+👉 This makes the code more complex and harder to understand.
+
+---
+
+### 2. Reusing Stateful Logic Was Difficult
+
+Before Hooks, React used:
+
+* Higher Order Components (HOC)
+* Render Props
+
+for sharing logic between components.
+
+But this created:
+
+* Nested components
+* Hard-to-read code
+* Complex structures
+
+#### Example Problem:
+
+If two components need the same logic (like mouse tracking or API fetching), the logic cannot be reused easily.
+
+---
+
+### 3. Lifecycle Methods Were Hard to Manage
+
+Related logic was often spread across multiple lifecycle methods.
+
+#### Example:
+
+Data fetching:
+
+```jsx
+componentDidMount()
+componentDidUpdate()
+```
+
+Event listeners:
+
+```jsx
+componentDidMount()
+componentWillUnmount()
+```
+
+👉 Code became difficult to organize and maintain.
+
+---
+
+## ✅ Advantages of Hooks
+
+Hooks solve these problems.
+
+### ✨ Benefits of Hooks
+
+* No need for class components
+* No `this` keyword confusion
+* Cleaner and shorter code
+* Better code reusability
+* Easier state management
+* Better organization of logic
+* Easier to understand and maintain
+
+---
+
+# 🔥 Important Points About Hooks
+
+* Hooks were introduced in **React 16.8**
+* Hooks are completely optional
+* Hooks are backward compatible
+* Class components are still supported
+* Hooks do not work inside class components
+* Hooks do not replace React concepts
+* Hooks provide a simpler API for React features
+
+---
+
+# ⚙️ Common React Hooks
+
+## 1. useState Hook
+
+Used to manage state inside functional components.
+
+### ✅ Example:
+
+```jsx
+import React, { useState } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>
+        Increment
+      </button>
+    </div>
+  );
+}
+```
+
+### 📖 Explanation:
+
+* `count` → current state value
+* `setCount` → function to update state
+* `useState(0)` → initial value is `0`
+
+---
+
+## 2. useEffect Hook
+
+Used for:
+
+* API calls
+* Side effects
+* Event listeners
+* Timers
+* Updating the DOM
+
+### ✅ Example:
+
+```jsx
+import React, { useEffect } from 'react';
+
+function App() {
+  useEffect(() => {
+    console.log('Component Mounted');
+  }, []);
+
+  return <h1>Hello React</h1>;
+}
+```
+
+### 📖 Explanation:
+
+* `useEffect()` runs after rendering
+* Empty dependency array `[]` means it runs only once
+
+---
+
+## 3. useContext Hook
+
+Used to access data globally without prop drilling.
+
+### Example Use Cases:
+
+* Theme management
+* Authentication
+* Language settings
+
+---
+
+## 4. useRef Hook
+
+Used to:
+
+* Access DOM elements directly
+* Store mutable values
+
+---
+
+## 5. useMemo Hook
+
+Used for performance optimization by memoizing values.
+
+---
+
+## 6. useCallback Hook
+
+Used to memoize functions and prevent unnecessary re-renders.
+
+---
+
+# 📏 Rules of Hooks
+
+## ✅ Rule 1: Only Call Hooks at the Top Level
+
+❌ Do NOT call hooks:
+
+* Inside loops
+* Inside conditions
+* Inside nested functions
+
+### ✅ Correct:
+
+```jsx
+function App() {
+  const [count, setCount] = useState(0);
+}
+```
+
+### ❌ Wrong:
+
+```jsx
+if (true) {
+  useState();
+}
+```
+
+---
+
+## ✅ Rule 2: Only Call Hooks from React Functions
+
+Hooks can only be used:
+
+* Inside React functional components
+* Inside custom hooks
+
+❌ Do NOT use hooks inside:
+
+* Normal JavaScript functions
+* Class components
+
+---
+
+# 🧠 Functional Components + Hooks
+
+Hooks made functional components very powerful.
+
+Now functional components can:
+
+* Manage state
+* Handle lifecycle methods
+* Perform API calls
+* Reuse logic
+* Handle side effects
+
+👉 Because of Hooks, functional components became the modern standard in React.
+
+---
+
+# 📌 Final Summary
+
+* Hooks were introduced in React 16.8
+* Hooks allow React features inside functional components
+* Hooks remove the need for class components
+* Hooks make code cleaner and reusable
+* Functional components + Hooks are the modern React approach
+* Hooks simplify state and lifecycle management
