@@ -1,14 +1,17 @@
 import './App.css';
+// import HookCounter from './hooks/HooksCounter';
 // import ClassCounter from './hooks/ClassCounter';
-import HookCounter from './hooks/HooksCounter';
+import HookCounterTwo from './hooks/HookCounterTwo';
+import HookCounterObject from './hooks/HookCounterObject';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         {/* <ClassCounter /> */}
-        <HookCounter />
-
+        {/* <HookCounter /> */}
+        {/* <HookCounterTwo /> */}
+<HookCounterObject/>
       </header>
     </div>
   );

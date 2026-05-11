@@ -354,7 +354,7 @@ Used to memoize functions and prevent unnecessary re-renders.
 
 * Inside loops
 * Inside conditions
-* Inside nested functions`
+* Inside nested functions
 
 ### ✅ Correct:
 
@@ -412,4 +412,3 @@ Now functional components can:
 * Hooks make code cleaner and reusable
 * Functional components + Hooks are the modern React approach
 * Hooks simplify state and lifecycle management
-
