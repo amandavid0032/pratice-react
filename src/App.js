@@ -1,8 +1,9 @@
 import './App.css';
+import HooksCounterArray from './hooks/HooksCounterArray';
 // import HookCounter from './hooks/HooksCounter';
 // import ClassCounter from './hooks/ClassCounter';
-import HookCounterTwo from './hooks/HookCounterTwo';
-import HookCounterObject from './hooks/HookCounterObject';
+// import HookCounterTwo from './hooks/HookCounterTwo';
+// import HookCounterObject from './hooks/HookCounterObject';
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
         {/* <ClassCounter /> */}
         {/* <HookCounter /> */}
         {/* <HookCounterTwo /> */}
-<HookCounterObject/>
+        {/* <HookCounterObject/> */}
+        <HooksCounterArray/>
       </header>
     </div>
   );
